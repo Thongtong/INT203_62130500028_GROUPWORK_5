@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery</title>
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+
+<body>
+
+    <main id="app" class="w-full px-4 sm:max-w-lg sm:mx-auto">
+        <h1 class="text-center pt-10 text-5xl text-black">วิชาที่เรียนทั้งหมด ({{ countTotal }})</h1>
+        <h2 class="text-center text-3xl p-3 text-black"> วิชาที่โปรด ({{ countShow }})</h2>
+        <photo-search :form = "form"></photo-search>
+
+
+        <div v-for="(picture,index) in search" v-if="search.length !==0" >
+        <photo-item :index="index" @tap-fav="showFav" @tap-view="toggleView"></photo-item>
+        </div>
+        <div v-else class="flex justify-center w-full py-5 mx-auto mt-10 bg-white rounded shadow-lg px-auto ">
+        <h2 class="mb-2 text-2xl font-bold text-gray-800 ">No Photos.</h2> 
+        </div>
+        <photo-views :img="viewImg" :view="hasView" @click-close="close"></photo-views>
+    </main>
+
+    <!-- my main.js -->
+    <script src="./main.js"></script>
+    <script src="components/photoItem.js"></script>
+    <script src="components/photoSearch.js"></script>
+    <script src="components/photoView.js"></script>
+<script>
+    const mountedApp = app.mount('#app');
+</script>
+
+</body>
+
+
+</html>
