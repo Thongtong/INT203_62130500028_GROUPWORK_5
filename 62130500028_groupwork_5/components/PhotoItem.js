@@ -1,21 +1,16 @@
 app.component('photo-item', {
     props: {
-        index: Object,
+        picture: Object,
     },
     template:
         /*html*/
         `
         <div class="flex flex-row space-x-5">
-        <button @click="tapFav(index)" @dblclick=" tapView(index)">
-                    <img v-bind:src="pictures.path" width="100" height="1000">
-                </button>
-        <button @click="tapView(index)" >
-                    <img v-bind:src="pictures.path" width="100" height="1000">
-                </button>
+        <button @click="tapFav(picture)" @dblclick=" tapView(picture)"><img v-bind:src="picture.path" width="100" height="1000"></button>
             <div class="mt-10">
-                <p>{{ pictures.description }}</p>
+                <p>{{ picture.description }}</p>
             </div>
-            <span v-show="pictures.showFav" style="color: red;" class="material-icons mt-10">
+            <span v-show="picture.showFav" style="color: red;" class="material-icons mt-10">
                 favorite
             </span>
         </div> 
@@ -24,12 +19,12 @@ app.component('photo-item', {
         return {}
     },
     methods: {
-        tapFav(index) {
-            this.$emit('show-fav', index);
+        tapFav(picture) {
+            this.$emit('show-fav', picture);
         },
-        tapView(index) {
-            console.log(index)
-            this.$emit('toggle-view', index);
+        tapView(picture) {
+            console.log(picture)
+            this.$emit('toggle-view', picture);
         }
     }
 });

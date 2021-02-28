@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             pictures: [{
-                    no: 0,
+                    num: 0,
                     path: './images/vue.jpg',
                     description: 'INT203 Client Side Web Programming II',
                     Favorite: false
@@ -26,7 +26,7 @@ const app = Vue.createApp({
                     Favorite: false,
                 },
                 {
-                    num: 3,
+                    num: 4,
                     path: './images/ARCHITECTURE.jpg',
                     description: 'INT 210 ARCHITECTURE, INTEGRATION AND DEPLOYMENT',
                     Favorite: false
@@ -43,11 +43,13 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        showFav(index) {
-            this.pictures[index].showFav = !this.pictures[index].showFav;
+        showFav(picture) {
+            console.log(picture);
+            this.pictures[picture.num].showFav = !this.pictures[picture.num].showFav;
+            
         },
-        toggleView(index) {
-            this.viewImg = this.pictures[index].path;
+        toggleView(picture) {
+            this.viewImg = this.pictures[picture.num].path;
             this.hasView = true;
         },
 

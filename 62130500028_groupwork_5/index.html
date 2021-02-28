@@ -26,8 +26,9 @@
 
 
         <div v-for="(picture,index) in search" v-if="search.length !==0" >
-        <photo-item :index="index" @tap-fav="showFav" @tap-view="toggleView"></photo-item>
+        <photo-item :picture="picture" @show-fav="showFav" @toggle-view="toggleView"></photo-item>
         </div>
+        
         <div v-else class="flex justify-center w-full py-5 mx-auto mt-10 bg-white rounded shadow-lg px-auto ">
         <h2 class="mb-2 text-2xl font-bold text-gray-800 ">No Photos.</h2> 
         </div>
@@ -39,11 +40,11 @@
     <script src="components/photoItem.js"></script>
     <script src="components/photoSearch.js"></script>
     <script src="components/photoView.js"></script>
+
+
+</body>
 <script>
     const mountedApp = app.mount('#app');
 </script>
-
-</body>
-
 
 </html>
